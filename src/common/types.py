@@ -1,5 +1,8 @@
 import enum
 
+class HMovingDirection(enum.Enum):
+    UP = "up"
+    DOWN = "down"
 
 class ActionType(enum.Enum):
     IDLE = "idle"
