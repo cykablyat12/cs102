@@ -19,6 +19,5 @@ def event_handler(world: World) -> None:
     for entity in world.get_entities(EntityType.SHADOW_TYPE_B):
         if world.player.collide(entity):
             GameEvent(EventType.RESTART_LEVEL).post()
-    for entity in world.get_entities(EntityType.FALLING_FLOOR):
-        if entity.rect.colliderect(world.player.rect.left, world.player.rect.top, world.player.rect.width, world.player.rect.height + 20):
-            entity.falling()
+    if world.player.count_inventory(EntityType.CANDY) >= needed_items_count:
+        GameEvent(EventType.LEVEL_END).post()
