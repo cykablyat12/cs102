@@ -19,12 +19,16 @@ class EntityType(enum.Enum):
     EMPTY = 0
     GROUND_A = 1
     GROUND_B = 2
+    GROUND_C = 3
+    FALLING_FLOOR = 4
 
     PLAYER = 20
     SHADOW = 21
     NPC_CO_NGA = 22
     NPC_CHU_NAM = 23
     NPC_CHU_NHAN = 24
+
+    SHADOW_TYPE_B = 25
 
     TRAMPOLINE = 30
     TRAMPOLINE_PART_SPRING = 31

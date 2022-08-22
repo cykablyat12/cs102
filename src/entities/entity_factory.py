@@ -24,8 +24,9 @@ from entities.player_inventory import PlayerInventory
 from entities.shadow import Shadow
 from entities.trampoline import Trampoline
 from entities.trampoline_part import TrampolinePart
+from entities import ShadowTypeB
 
-
+from random import randint
 class EntityFactory:
     """
     Since creating entities required specific config values for different entity types,
@@ -84,6 +85,16 @@ class EntityFactory:
                 animation_interval_ms=ShadowConfig.ANIMATION_INTERVAL_MS,
                 speed=ShadowConfig.SPEED,
                 damage=ShadowConfig.DAMAGE,
+            )
+        
+        elif entity_type == EntityType.SHADOW_TYPE_B:
+            return ShadowTypeB.ShadowTypeB(
+                entity_type=entity_type,
+                x=x,
+                y=y,
+                sprite_path=ShadowConfig.SPRITE_PATH / "idle" / "2.png",
+                scale=ShadowConfig.SCALE,
+                jump_vertical_speed=ShadowConfig.SPEED * randint(5, 9)
             )
 
         elif entity_type in FRIENDLY_NPC_TYPES:
