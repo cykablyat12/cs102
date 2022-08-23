@@ -33,6 +33,7 @@ class EntityType(enum.Enum):
     TRAMPOLINE = 30
     TRAMPOLINE_PART_SPRING = 31
     TRAMPOLINE_PART_FRAME = 32
+    TRAMPOLINE_TYPE_B = 33
 
     SHADOW_BOSS = 40
 

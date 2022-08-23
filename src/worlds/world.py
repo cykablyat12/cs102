@@ -238,7 +238,7 @@ class World(BaseScene):
         return [
             entity
             for entity in self.entities.values()
-            if entity.entity_type == EntityType.TRAMPOLINE
+            if entity.entity_type == EntityType.TRAMPOLINE or entity.entity_type == EntityType.TRAMPOLINE_TYPE_B
         ]
 
     def get_entities(

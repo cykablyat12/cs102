@@ -65,7 +65,7 @@ class DialogueBoxConfig:
 
 
 class PlayerConfig:
-    DEFAULT_X: int = 350
+    DEFAULT_X: int = 0
     DEFAULT_Y: int = 400
     SPRITE_PATH: Path = ASSET_DIR / "player"
     SCALE: float = 0.16

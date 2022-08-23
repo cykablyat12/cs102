@@ -13,7 +13,7 @@ from level_logics import one, twelve, thirteen
 _HANDLERS = {
     1: one.event_handler,
     12: twelve.event_handler,
-    13: thirteen.event_handler,
+    13: thirteen.event_handler
 }
 
 

@@ -11,6 +11,7 @@ from config import (
     ShadowConfig,
     TrampolineConfig,
 )
+from entities.FallingFloor import FallingFloor
 # <-- COT MOC 4 -->
 # from config import PlayerBulletConfig
 from entities.base_entity import BaseEntity
@@ -97,6 +98,15 @@ class EntityFactory:
                 jump_vertical_speed=ShadowConfig.SPEED * randint(5, 9)
             )
 
+        elif entity_type == EntityType.FALLING_FLOOR:
+            return FallingFloor(
+                entity_type = entity_type,
+                x = x,
+                y = y,
+                sprite_path = ASSET_DIR / "items" / f"{entity_type.name.lower()}.png",
+                scale = (GameConfig.TILE_SIZE, GameConfig.TILE_SIZE),
+            )
+
         elif entity_type in FRIENDLY_NPC_TYPES:
             config: NpcConfig = NpcConfig(entity_type=entity_type)
             return FriendlyNpc(
@@ -123,6 +133,15 @@ class EntityFactory:
                 y=y,
                 sprite_path=TrampolineConfig.SPRITE_PATH,
                 scale=TrampolineConfig.SCALE,
+                animation_interval_ms=TrampolineConfig.ANIMATION_INTERVAL_MS,
+            )
+        elif entity_type == EntityType.TRAMPOLINE_TYPE_B:
+            return Trampoline(
+                entity_type=entity_type,
+                x=x,
+                y=y,
+                sprite_path=ASSET_DIR / "items" / "trampoline_type_b",
+                scale=(GameConfig.TILE_SIZE, GameConfig.TILE_SIZE),
                 animation_interval_ms=TrampolineConfig.ANIMATION_INTERVAL_MS,
             )
         elif entity_type in TRAMPOLINE_PART_TYPES:

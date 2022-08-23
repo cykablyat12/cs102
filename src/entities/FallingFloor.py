@@ -24,13 +24,15 @@ class FallingFloor(BaseEntity):
         speed: int = 0,
         init_dy: int = 0,
         jump_vertical_speed: int = 0,
+        gravity: int = 0.6,
         *args,
         **kwargs,
     ) -> None:
         super().__init__(*args, **kwargs)
         self.speed = speed
-        self.dy = init_dy
+        self.falling_spd = 0.2
         self.falling = False
+        self.gravity = gravity
     def update(self, events: Sequence[GameEvent], world: World):
 
         """ Completely override original update() method from BaseEntity"""
@@ -38,8 +40,9 @@ class FallingFloor(BaseEntity):
             self.fall()
         
         if self.falling:
-            self.rect.y -= 3
+            self.falling_spd += self.gravity
+            self.rect.y += self.falling_spd
         # Step 3: update current position by the deltas
-        self.rect.y += self.dy
+            self.rect.y += self.falling_spd
     def fall(self):
         self.falling = True

@@ -17,6 +17,7 @@ def event_handler(world: World) -> None:
     Logics for ending bonus level 12.
     """
     needed_items_cnt = 19
+    world.player.rect.topleft = 0
     if world.player.count_inventory(COLLECTABLE_TYPES) >= needed_items_cnt:
         world.player.discard_inventory(COLLECTABLE_TYPES)
         logger.info("Ending Level 12")
