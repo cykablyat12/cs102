@@ -118,6 +118,7 @@ class PlayerBulletConfig:
     TTL_MS: int = 400 * 60 // GameConfig.FPS
 
 
+
 class ShadowConfig:
     SPRITE_PATH: Path = ASSET_DIR / "npcs" / "shadow"
     SCALE: float = 0.2
@@ -130,9 +131,9 @@ class ShadowBossConfig:
     SPRITE_PATH: Path = ASSET_DIR / "npcs" / "shadow"
     SCALE: float = 0.6
     ANIMATION_INTERVAL_MS: int = 200
-    SPEED: int = 1
+    SPEED: int = 9
     DAMAGE: int = 1
-    INITIAL_HP: int = 100
+    INITIAL_HP: int = 150
 
     ANGRY_INTERVAL_MS: int = 7000
     ANGRY_DURATION_MS: int = 2000
@@ -153,6 +154,31 @@ class ShadowBulletConfig:
     # the time between creation and deletion of entities of this type
     TTL_MS: int = 3000
 
+class MeteoriteConfig:
+    SPRITE_PATH: Path = ASSET_DIR / "items" / "meteorite.png"
+    SCALE: float = 0.1
+    SPEED: int = 0
+    GRAVITY: int = 0.1
+    DAMAGE: int = 2
+
+    # initial vertical movement
+    INIT_DY: int = 15
+
+    # the time between creation and deletion of entities of this type
+    TTL_MS: int = 10000
+
+class ShadowBulletBConfig:
+    SPRITE_PATH: Path = ASSET_DIR / "items" / "shadow_bullet_b.png"
+    SCALE: float = 0.05
+    SPEED: int = 14
+    GRAVITY: int = 0.5
+    DAMAGE: int = 1
+
+    # initial vertical movement
+    INIT_DY: int = -5
+
+    # the time between creation and deletion of entities of this type
+    TTL_MS: int = 4000
 
 class TrampolineConfig:
     SPRITE_PATH: Path = ASSET_DIR / "items" / "trampoline"

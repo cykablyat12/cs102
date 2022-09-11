@@ -126,6 +126,8 @@ class Player(AnimatedEntity):
                 self._handle_throw()
             elif event.is_type(EventType.NPC_DIALOGUE_END):
                 self.talking = False
+            elif event.is_type(EventType.PLAYER_KNOCKBACK):
+                self.rect.x -= 30
 
     def _handle_activation(self):
         if not self.npc_near_by or not self.npc_near_by.has_dialogue():
@@ -158,6 +160,9 @@ class Player(AnimatedEntity):
 
                 if entity.entity_type == EntityType.LEVEL_END_FLAG:
                     GameEvent(EventType.LEVEL_END).post()
+                elif entity.entity_type == EntityType.HEART:
+                    self._take_damage(-1)
+                    self.discard_inventory([EntityType.HEART])
 
     def _handle_throw(self):
         """
@@ -178,7 +183,7 @@ class Player(AnimatedEntity):
             ball.move_right()
 
     def _handle_get_hit(self):
-        for bullet in self.world.get_entities(EntityType.SHADOW_BULLET):
+        for bullet in self.world.get_entities([EntityType.SHADOW_BULLET, EntityType.SHADOW_BULLET_B]):
             if self.collide(bullet):
                 self.world.remove_entity(bullet.id)
                 self._take_damage(bullet.damage)

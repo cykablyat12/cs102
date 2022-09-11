@@ -38,6 +38,7 @@ class EventType(enum.Enum):
     QUEST_END = pygame.event.custom_type()
     BOSS_DIE = pygame.event.custom_type()
 
+    PLAYER_KNOCKBACK = pygame.event.custom_type()
 
 class GameEvent:
     """

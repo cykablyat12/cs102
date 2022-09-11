@@ -17,6 +17,7 @@ class EntityType(enum.Enum):
     EMPTY = 0
     GROUND_A = 1
     GROUND_B = 2
+    GROUND_C = 3
 
     PLAYER = 20
     SHADOW = 21
@@ -30,6 +31,7 @@ class EntityType(enum.Enum):
     TRAMPOLINE_PART_FRAME = 32
 
     SHADOW_BOSS = 40
+    SHADOW_BOSS_B = 41
 
     # Collectable Items 60 -> 79
     CANDY = 60
@@ -47,9 +49,11 @@ class EntityType(enum.Enum):
     PLAYER_HP = 105
     PLAYER_INVENTORY = 106
     HP_HEART = 107
+    SHADOW_BULLET_B = 108
+    METEORITE = 109
 
 
-OBSTACLES_TYPES = (EntityType.GROUND_A, EntityType.GROUND_B)
+OBSTACLES_TYPES = (EntityType.GROUND_A, EntityType.GROUND_B, EntityType.GROUND_C)
 FRIENDLY_NPC_TYPES = (EntityType.NPC_CO_NGA, EntityType.NPC_CHU_NAM, EntityType.NPC_CHU_NHAN)
 TRAMPOLINE_PART_TYPES = (EntityType.TRAMPOLINE_PART_SPRING, EntityType.TRAMPOLINE_PART_FRAME)
 

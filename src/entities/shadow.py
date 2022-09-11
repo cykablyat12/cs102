@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Sequence
 from common.event import GameEvent
 from common.types import EntityType
 from entities.animated_entity import AnimatedEntity
+from config import GameConfig
 
 if TYPE_CHECKING:
     from worlds.world import World
@@ -20,7 +21,7 @@ class Shadow(AnimatedEntity):
     def __init__(self, damage, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.damage = damage
-
+        self.move_toggle = 0 # 0 - left, 1 - right
         # Shadow may move in a random direction at the start.
         self.move_random()
 
@@ -30,9 +31,16 @@ class Shadow(AnimatedEntity):
             return
 
         # Shadow has a probability to change direction.
-        rand_move = random.randint(1, 30)
-        if rand_move == 1:
-            self.move_opposite()
+        if self.rect.x > GameConfig.WIDTH - self.rect.width:
+            self.move_toggle = 0
+        elif self.rect.x < 0:
+            self.move_toggle = 1
+
+        if self.move_toggle == 0:
+            self.move_left()
+        else:
+            self.move_right()
+            
 
         self._handle_get_hit()
 

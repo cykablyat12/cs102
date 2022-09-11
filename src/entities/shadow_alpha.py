@@ -26,3 +26,4 @@ class ShadowAlpha(AnimatedEntity):
     def update(self, events: Sequence[GameEvent], world: World) -> None:
         super().update(events, world)
         self.set_flip_x(world.player.rect.x >= self.rect.x)
+    

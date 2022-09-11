@@ -5,12 +5,14 @@ from config import (
     ASSET_DIR,
     DialogueBoxConfig,
     GameConfig,
+    MeteoriteConfig,
     NpcConfig,
     PlayerBulletConfig,
     PlayerConfig,
     PlayerHpConfig,
     PlayerInventoryConfig,
     ShadowBossConfig,
+    ShadowBulletBConfig,
     ShadowBulletConfig,
     ShadowConfig,
     TrampolineConfig,
@@ -19,12 +21,14 @@ from entities.base_entity import BaseEntity
 from entities.bullet import Bullet
 from entities.dialogue_box import DialogueBox
 from entities.friendly_npc import FriendlyNpc
+from entities.meteorite import Meteorite
 from entities.player import Player
 from entities.player_hp import PlayerHp
 from entities.player_inventory import PlayerInventory
 from entities.shadow import Shadow
 from entities.shadow_alpha import ShadowAlpha
 from entities.shadow_boss import ShadowBoss
+from entities.shadow_boss_b import ShadowBossB
 from entities.trampoline import Trampoline
 from entities.trampoline_part import TrampolinePart
 
@@ -95,6 +99,19 @@ class EntityFactory:
                 speed=ShadowBulletConfig.SPEED,
                 damage=ShadowBulletConfig.DAMAGE,
             )
+        elif entity_type == EntityType.SHADOW_BULLET_B:
+            return Bullet(
+                entity_type=entity_type,
+                ttl_ms=ShadowBulletBConfig.TTL_MS,
+                x=x,
+                y=y,
+                init_dy=ShadowBulletBConfig.INIT_DY,
+                sprite_path=ShadowBulletBConfig.SPRITE_PATH,
+                scale=ShadowBulletBConfig.SCALE,
+                gravity=ShadowBulletBConfig.GRAVITY,
+                speed=ShadowBulletBConfig.SPEED,
+                damage=ShadowBulletBConfig.DAMAGE,
+            )
         elif entity_type == EntityType.SHADOW_ALPHA:
             return ShadowAlpha(
                 entity_type=entity_type,
@@ -126,6 +143,30 @@ class EntityFactory:
                 animation_interval_ms=ShadowBossConfig.ANIMATION_INTERVAL_MS,
                 speed=ShadowBossConfig.SPEED,
                 damage=ShadowBossConfig.DAMAGE,
+            )
+        elif entity_type == EntityType.SHADOW_BOSS_B:
+            return ShadowBossB(
+                entity_type=entity_type,
+                x=x,
+                y=y,
+                sprite_path=ShadowBossConfig.SPRITE_PATH,
+                scale=ShadowBossConfig.SCALE * 1.2,
+                animation_interval_ms=ShadowBossConfig.ANIMATION_INTERVAL_MS,
+                speed=ShadowBossConfig.SPEED,
+                damage=ShadowBossConfig.DAMAGE,
+            )
+        elif entity_type == EntityType.METEORITE:
+            return Meteorite(
+                entity_type=entity_type,
+                ttl_ms=MeteoriteConfig.TTL_MS,
+                x=x,
+                y=y,
+                init_dy=MeteoriteConfig.INIT_DY,
+                sprite_path=MeteoriteConfig.SPRITE_PATH,
+                scale=MeteoriteConfig.SCALE,
+                gravity=MeteoriteConfig.GRAVITY,
+                speed=MeteoriteConfig.SPEED,
+                damage=MeteoriteConfig.DAMAGE,
             )
 
         elif entity_type in FRIENDLY_NPC_TYPES:
